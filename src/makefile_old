@@ -1,0 +1,22 @@
+CC=g++-mp-5
+CFLAGS=-O3 -std=c++11
+EXECUTABLE=madQMC
+
+SOURCES=Walker.cpp Particle.cpp SimulationBox.cpp PhysicalSystem.cpp NumericalUtilities.cpp ErrorHandling.cpp Constants.cpp main.cpp
+
+HEAD=Walker.h Particle.h SimulationBox.h PhysicalSystem.h NumericalUtilities.h ErrorHandling.h Constants.h
+
+OBJECTS=$(SOURCES:.cpp=.o)
+
+all: $(SOURCES) $(HEAD) $(EXECUTABLE)
+	cp $(EXECUTABLE) ../
+
+clean:
+	\rm -f *.o $(EXECUTABLE)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+.cpp.o: $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@
+

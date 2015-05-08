@@ -1,0 +1,27 @@
+CC=g++-mp-5
+OPTFLAG=-O0
+CFLAGS=-std=c++11 -I../rapidxml $(OPTFLAG)
+EXECUTABLE=madQMC
+
+SOURCES=ParticleSet.cpp FileUtilities.cpp Walker.cpp Particle.cpp SimulationBox.cpp PhysicalSystem.cpp NumericalUtilities.cpp ErrorHandling.cpp Constants.cpp
+
+HEAD=$(SOURCES:.cpp=.h)
+OBJECTS=$(SOURCES:.cpp=.o) main.o
+
+all: $(EXECUTABLE) $(OBJECTS) $(HEAD) 
+	cp $(EXECUTABLE) ../
+
+clean:
+	\rm -f *.o $(EXECUTABLE)
+
+print:
+	echo "OBJECTS = " $(OBJECTS)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+
+$(OBJECTS): $(HEAD) $(SOURCES)
+
+.cpp.o: $(HEAD)
+	$(CC) $(CFLAGS) -c $< -o $@
+

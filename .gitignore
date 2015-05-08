@@ -1,0 +1,8 @@
+# -- Mac OS X files
+.DS_Store
+
+# -- Fake input file used only for testing
+src/*.xml
+
+# -- Library
+rapidxml

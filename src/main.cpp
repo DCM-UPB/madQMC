@@ -5,6 +5,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+
+#include "Walker.h"
 #include "PhysicalSystem.h"
 #include "SimulationBox.h"
 #include "../rapidxml/rapidxml.hpp"
@@ -13,7 +15,8 @@
 int main(int argc, char* argv[])
 {
 
-   PhysicalSystem prova(inputfile::filename_physical_system.c_str());
+   PhysicalSystem ps(user_input::filename_physical_system.c_str());
+   SimulationBox box(&ps,user_input::filename_simulation_box.c_str());
 
    return 0;
 }

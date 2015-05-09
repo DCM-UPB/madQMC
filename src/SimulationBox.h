@@ -1,37 +1,51 @@
+#ifndef SIMULATION_BOX
+#define SIMULATION_BOX
+
+
 #include <iostream>
 #include <math.h>
 #include <string>
 #include <cstring>
 #include <sstream>
-#include "Constants.h"
+
 #include "PhysicalSystem.h"
 #include "NumericalUtilities.h"
-#include "ErrorHandling.h"
 
-#ifndef SIMULATION_BOX
-#define SIMULATION_BOX
 
 class SimulationBox
 {
    protected:
+      
+      //Parameters
       double *_L;
-      const PhysicalSystem *_phys_syst;
+      bool _pbc;
+      
+      //Pointers to related informations
+      PhysicalSystem *_physical_system;
+
 
    public:
+      
+      //Class parameters
+      static bool verbosity;
+      
       //   Constructor:
-      SimulationBox(const PhysicalSystem *ps) throw(std::exception);
-      SimulationBox(const PhysicalSystem *ps, const double *ratio) throw(std::exception);
+      SimulationBox(PhysicalSystem *, const char *) throw(std::exception);
 
       //   Destructor:
-      ~SimulationBox(){delete[] _L; _L=0; _phys_syst=0;}
+      ~SimulationBox(){_L=0; _physical_system=0;}
+      
+      //Checks
+      void checkRatio(const double *);
       
       //   Getter:
-      double GetL(const unsigned short int &) throw(std::exception);
-      const PhysicalSystem * GetPhysicalSystem() {return _phys_syst;}
+      double getL(const unsigned short int &) throw(std::exception);
+      PhysicalSystem * getPhysicalSystem() {return _physical_system;}
 
       //   Setter:
-      void SetL(const double &, const unsigned short int &);
+      void setL(const double &, const unsigned short int &);
 
+      
 };
 
 

@@ -3,7 +3,7 @@
 
 bool AlmostEqualDouble(const double &arg1, const double &arg2)
 {
-   if ( (arg1<arg2+cnst::EPS) && (arg1>arg2-cnst::EPS) )
+   if ( (arg1<arg2+constants::EPS) && (arg1>arg2-constants::EPS) )
    {
       return 1;
    }

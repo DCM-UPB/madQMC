@@ -1,9 +1,11 @@
+#ifndef ERROR_HANDLING
+#define ERROR_HANDLING
+
+
 #include <exception>
 #include <iostream>
 #include "Constants.h"
 
-#ifndef ERROR_HANDLING
-#define ERROR_HANDLING
 
 namespace err
 {
@@ -25,7 +27,7 @@ namespace err
             {
                message[i1]=m[i1];
             }
-            if (cnst::EXIT_ON_ERROR) Stop(message);
+            if (code_behaviour::EXIT_ON_ERROR) Stop(message);
          }
          //Destructor
          ~MyException(){delete[] message;}

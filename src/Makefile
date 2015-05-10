@@ -1,9 +1,9 @@
 CC=g++-mp-5
-OPTFLAG=-O0
+OPTFLAG=-O3
 CFLAGS=-std=c++11 -I../rapidxml $(OPTFLAG)
 EXECUTABLE=madQMC
 
-SOURCES=ParticleSet.cpp FileUtilities.cpp Walker.cpp SimulationBox.cpp PhysicalSystem.cpp NumericalUtilities.cpp ErrorHandling.cpp Constants.cpp
+SOURCES=Jastrow2.cpp WalkerTracker.cpp WaveFunctionComponent.cpp WaveFunction.cpp ParticleSet.cpp FileUtilities.cpp Walker.cpp SimulationBox.cpp PhysicalSystem.cpp NumericalUtilities.cpp ErrorHandling.cpp Constants.cpp
 
 HEAD=$(SOURCES:.cpp=.h)
 OBJECTS=$(SOURCES:.cpp=.o) main.o

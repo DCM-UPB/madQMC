@@ -3,12 +3,15 @@
 
 
 #include "ParticleSet.h"
+#include "WalkerTracker.h"
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 
 class ParticleSet;
+class WalkerTracker;
 
 
 class Walker
@@ -20,6 +23,7 @@ class Walker
       
       //Pointers to related informations
       ParticleSet *_particle_set;
+      std::vector<WalkerTracker> *_trackers;
       
       
    public:
@@ -36,6 +40,13 @@ class Walker
       
       //Initialize position
       void initializePosition(const std::string &);
+      
+      //Getters
+      ParticleSet * getParticleSet() {return _particle_set;}
+      
+      //Notify changes to the wave functions components
+      void notifyChanges(const unsigned short int &, const unsigned short int &);
+      
 };
 
 
